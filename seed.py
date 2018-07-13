@@ -5,6 +5,9 @@ from models import Actor, Role, ActorRole, engine
 
 Base = declarative_base()
 
+engine = create_engine('sqlite:///actor_roles.db')
+Base.metadata.create_all(engine)
+
 session = sessionmaker()
 session.configure(bind=engine)
 Base.metadata.bind = engine
